@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results skipped="0" failed="0" total="1" passed="1">
+  <reporter-output>
+  </reporter-output>
+  <suite name="Default suite" duration-ms="28056" started-at="2016-10-18T15:28:06Z" finished-at="2016-10-18T15:28:34Z">
+    <groups>
+    </groups>
+    <test name="Default test" duration-ms="28056" started-at="2016-10-18T15:28:06Z" finished-at="2016-10-18T15:28:34Z">
+      <class name="pack.TC_Login">
+        <test-method status="PASS" signature="TC_login()[pri:0, instance:pack.TC_Login@7c16905e]" name="TC_login" duration-ms="27997" started-at="2016-10-18T20:58:06Z" finished-at="2016-10-18T20:58:34Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- TC_login -->
+      </class> <!-- pack.TC_Login -->
+    </test> <!-- Default test -->
+  </suite> <!-- Default suite -->
+</testng-results>
