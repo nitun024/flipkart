@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results skipped="0" failed="0" total="1" passed="1">
+  <reporter-output>
+    <line>
+      <![CDATA[Login succesful]]>
+    </line>
+  </reporter-output>
+  <suite name="Default suite" duration-ms="80892" started-at="2016-10-19T17:20:16Z" finished-at="2016-10-19T17:21:37Z">
+    <groups>
+    </groups>
+    <test name="Default test" duration-ms="80892" started-at="2016-10-19T17:20:16Z" finished-at="2016-10-19T17:21:37Z">
+      <class name="pack.TestSuite1">
+        <test-method status="PASS" signature="testSuite1()[pri:0, instance:pack.TestSuite1@735b5592]" name="testSuite1" duration-ms="80830" started-at="2016-10-19T22:50:16Z" finished-at="2016-10-19T22:51:37Z">
+          <reporter-output>
+            <line>
+              <![CDATA[Login succesful]]>
+            </line>
+          </reporter-output>
+        </test-method> <!-- testSuite1 -->
+      </class> <!-- pack.TestSuite1 -->
+    </test> <!-- Default test -->
+  </suite> <!-- Default suite -->
+</testng-results>
