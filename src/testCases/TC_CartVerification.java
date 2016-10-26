@@ -1,4 +1,4 @@
-package pack;
+package testCases;
 
 import java.sql.SQLException;
 import java.util.concurrent.TimeUnit;
@@ -7,8 +7,7 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.testng.Reporter;
-import org.testng.annotations.Test;
+import utils.DBConnection;
 
 public class TC_CartVerification {
 
@@ -33,7 +32,7 @@ public class TC_CartVerification {
 		driver.findElement(By.xpath("//*[@class='_2zrpKA']")).sendKeys(emailAdd);
 		driver.findElement(By.xpath("//*[@class='_2zrpKA _3v41xv']")).sendKeys(DBConnection.getPasswordFromDB());
 		driver.findElement(By.xpath("//div[@class='_1avdGP']/button")).click();
-		Reporter.log("Login succesful", true);
+	//	Reporter.log("Login succesful", true);
 
 		// Search for the Fossil watch 'Fossil CH2601I DECKER - M Analog Watch -
 		// For Men'
