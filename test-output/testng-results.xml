@@ -1,23 +1,57 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results skipped="0" failed="0" total="1" passed="1">
+<testng-results skipped="0" failed="1" total="1" passed="0">
   <reporter-output>
-    <line>
-      <![CDATA[Login succesful]]>
-    </line>
   </reporter-output>
-  <suite name="Default suite" duration-ms="80892" started-at="2016-10-19T17:20:16Z" finished-at="2016-10-19T17:21:37Z">
+  <suite name="Default suite" duration-ms="39353" started-at="2016-10-25T09:35:51Z" finished-at="2016-10-25T09:36:30Z">
     <groups>
     </groups>
-    <test name="Default test" duration-ms="80892" started-at="2016-10-19T17:20:16Z" finished-at="2016-10-19T17:21:37Z">
-      <class name="pack.TestSuite1">
-        <test-method status="PASS" signature="testSuite1()[pri:0, instance:pack.TestSuite1@735b5592]" name="testSuite1" duration-ms="80830" started-at="2016-10-19T22:50:16Z" finished-at="2016-10-19T22:51:37Z">
+    <test name="Default test" duration-ms="39353" started-at="2016-10-25T09:35:51Z" finished-at="2016-10-25T09:36:30Z">
+      <class name="testCases.TC_Login">
+        <test-method status="FAIL" signature="TC_login()[pri:0, instance:testCases.TC_Login@66a3ffec]" name="TC_login" duration-ms="39272" started-at="2016-10-25T15:05:51Z" finished-at="2016-10-25T15:06:30Z">
+          <exception class="java.io.FileNotFoundException">
+            <message>
+              <![CDATA[no such entry: "EncryptionInfo", had: [SummaryInformation, DocumentSummaryInformation, Workbook]]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[java.io.FileNotFoundException: no such entry: "EncryptionInfo", had: [SummaryInformation, DocumentSummaryInformation, Workbook]
+	at org.apache.poi.poifs.filesystem.DirectoryNode.getEntry(DirectoryNode.java:399)
+	at org.apache.poi.poifs.filesystem.DirectoryNode.createDocumentInputStream(DirectoryNode.java:188)
+	at org.apache.poi.poifs.crypt.EncryptionInfo.<init>(EncryptionInfo.java:94)
+	at org.apache.poi.poifs.crypt.EncryptionInfo.<init>(EncryptionInfo.java:88)
+	at utils.ExcelConnection.getEmailExcelPOI(ExcelConnection.java:68)
+	at testCases.TC_Login.TC_login(TC_Login.java:40)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:100)
+	at org.testng.internal.Invoker.invokeMethod(Invoker.java:646)
+	at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:811)
+	at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:1137)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:129)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:112)
+	at org.testng.TestRunner.privateRun(TestRunner.java:753)
+	at org.testng.TestRunner.run(TestRunner.java:607)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:368)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:363)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:321)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:270)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:86)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1284)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1209)
+	at org.testng.TestNG.runSuites(TestNG.java:1124)
+	at org.testng.TestNG.run(TestNG.java:1096)
+	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:132)
+	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:236)
+	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:81)
+]]>
+            </full-stacktrace>
+          </exception> <!-- java.io.FileNotFoundException -->
           <reporter-output>
-            <line>
-              <![CDATA[Login succesful]]>
-            </line>
           </reporter-output>
-        </test-method> <!-- testSuite1 -->
-      </class> <!-- pack.TestSuite1 -->
+        </test-method> <!-- TC_login -->
+      </class> <!-- testCases.TC_Login -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->
 </testng-results>

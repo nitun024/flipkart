@@ -55,11 +55,11 @@ function toggleAllBoxes() {
 <body>
 <h2 align='center'>Default test</h2><table border='1' align="center">
 <tr>
-<td>Tests passed/Failed/Skipped:</td><td>1/0/0</td>
+<td>Tests passed/Failed/Skipped:</td><td>0/1/0</td>
 </tr><tr>
-<td>Started on:</td><td>Wed Oct 19 22:50:16 IST 2016</td>
+<td>Started on:</td><td>Tue Oct 25 15:05:51 IST 2016</td>
 </tr>
-<tr><td>Total time:</td><td>80 seconds (80892 ms)</td>
+<tr><td>Total time:</td><td>39 seconds (39353 ms)</td>
 </tr><tr>
 <td>Included groups:</td><td></td>
 </tr><tr>
@@ -67,25 +67,83 @@ function toggleAllBoxes() {
 </tr>
 </table><p/>
 <small><i>(Hover the method name to see the test class name)</i></small><p/>
-<table width='100%' border='1' class='invocation-passed'>
-<tr><td colspan='4' align='center'><b>PASSED TESTS</b></td></tr>
+<table width='100%' border='1' class='invocation-failed'>
+<tr><td colspan='4' align='center'><b>FAILED TESTS</b></td></tr>
 <tr><td><b>Test method</b></td>
 <td width="30%"><b>Exception</b></td>
 <td width="10%"><b>Time (seconds)</b></td>
 <td><b>Instance</b></td>
 </tr>
 <tr>
-<td title='pack.TestSuite1.testSuite1()'><b>testSuite1</b><br>Test class: pack.TestSuite1<br/>
-<a href="#Output-1094523823" onClick='toggleBox("Output-1094523823", this, "Show output", "Hide output");'>Show output</a>
-
-<a href="#Output-1094523823" onClick="toggleAllBoxes();">Show all outputs</a>
-<div class='log' id="Output-1094523823">
-Login succesful<br/>
-</div>
-</td>
-<td></td>
-<td>80</td>
-<td>pack.TestSuite1@735b5592</td></tr>
+<td title='testCases.TC_Login.TC_login()'><b>TC_login</b><br>Test class: testCases.TC_Login</td>
+<td><div><pre>java.io.FileNotFoundException: no such entry: &quot;EncryptionInfo&quot;, had: [SummaryInformation, DocumentSummaryInformation, Workbook]
+	at org.apache.poi.poifs.filesystem.DirectoryNode.getEntry(DirectoryNode.java:399)
+	at org.apache.poi.poifs.filesystem.DirectoryNode.createDocumentInputStream(DirectoryNode.java:188)
+	at org.apache.poi.poifs.crypt.EncryptionInfo.&lt;init&gt;(EncryptionInfo.java:94)
+	at org.apache.poi.poifs.crypt.EncryptionInfo.&lt;init&gt;(EncryptionInfo.java:88)
+	at utils.ExcelConnection.getEmailExcelPOI(ExcelConnection.java:68)
+	at testCases.TC_Login.TC_login(TC_Login.java:40)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:100)
+	at org.testng.internal.Invoker.invokeMethod(Invoker.java:646)
+	at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:811)
+	at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:1137)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:129)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:112)
+	at org.testng.TestRunner.privateRun(TestRunner.java:753)
+	at org.testng.TestRunner.run(TestRunner.java:607)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:368)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:363)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:321)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:270)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:86)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1284)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1209)
+	at org.testng.TestNG.runSuites(TestNG.java:1124)
+	at org.testng.TestNG.run(TestNG.java:1096)
+	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:132)
+	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:236)
+	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:81)
+</pre></div><a href='#' onClick='toggleBox("stack-trace707157673", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace707157673'><pre>java.io.FileNotFoundException: no such entry: &quot;EncryptionInfo&quot;, had: [SummaryInformation, DocumentSummaryInformation, Workbook]
+	at org.apache.poi.poifs.filesystem.DirectoryNode.getEntry(DirectoryNode.java:399)
+	at org.apache.poi.poifs.filesystem.DirectoryNode.createDocumentInputStream(DirectoryNode.java:188)
+	at org.apache.poi.poifs.crypt.EncryptionInfo.&lt;init&gt;(EncryptionInfo.java:94)
+	at org.apache.poi.poifs.crypt.EncryptionInfo.&lt;init&gt;(EncryptionInfo.java:88)
+	at utils.ExcelConnection.getEmailExcelPOI(ExcelConnection.java:68)
+	at testCases.TC_Login.TC_login(TC_Login.java:40)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:100)
+	at org.testng.internal.Invoker.invokeMethod(Invoker.java:646)
+	at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:811)
+	at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:1137)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:129)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:112)
+	at org.testng.TestRunner.privateRun(TestRunner.java:753)
+	at org.testng.TestRunner.run(TestRunner.java:607)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:368)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:363)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:321)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:270)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:86)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1284)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1209)
+	at org.testng.TestNG.runSuites(TestNG.java:1124)
+	at org.testng.TestNG.run(TestNG.java:1096)
+	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:132)
+	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:236)
+	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:81)
+</pre></div></td>
+<td>39</td>
+<td>testCases.TC_Login@66a3ffec</td></tr>
 </table><p>
 </body>
 </html>
