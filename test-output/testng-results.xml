@@ -2,24 +2,57 @@
 <testng-results skipped="0" failed="1" total="1" passed="0">
   <reporter-output>
   </reporter-output>
-  <suite name="Default suite" duration-ms="39353" started-at="2016-10-25T09:35:51Z" finished-at="2016-10-25T09:36:30Z">
+  <suite name="Default suite" duration-ms="47010" started-at="2016-10-31T18:18:46Z" finished-at="2016-10-31T18:19:33Z">
     <groups>
     </groups>
-    <test name="Default test" duration-ms="39353" started-at="2016-10-25T09:35:51Z" finished-at="2016-10-25T09:36:30Z">
-      <class name="testCases.TC_Login">
-        <test-method status="FAIL" signature="TC_login()[pri:0, instance:testCases.TC_Login@66a3ffec]" name="TC_login" duration-ms="39272" started-at="2016-10-25T15:05:51Z" finished-at="2016-10-25T15:06:30Z">
-          <exception class="java.io.FileNotFoundException">
+    <test name="Default test" duration-ms="47010" started-at="2016-10-31T18:18:46Z" finished-at="2016-10-31T18:19:33Z">
+      <class name="testCases.TC_CartVerification">
+        <test-method status="PASS" signature="setup()[pri:0, instance:testCases.TC_CartVerification@604ed9f0]" name="setup" is-config="true" duration-ms="13" started-at="2016-10-31T23:48:46Z" finished-at="2016-10-31T23:48:46Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setup -->
+        <test-method status="FAIL" signature="TC_cartVerification()[pri:0, instance:testCases.TC_CartVerification@604ed9f0]" name="TC_cartVerification" duration-ms="46956" started-at="2016-10-31T23:48:46Z" finished-at="2016-10-31T23:49:33Z">
+          <exception class="org.openqa.selenium.NoSuchElementException">
             <message>
-              <![CDATA[no such entry: "EncryptionInfo", had: [SummaryInformation, DocumentSummaryInformation, Workbook]]]>
+              <![CDATA[no such element: Unable to locate element: {"method":"xpath","selector":"//*[@class='_3zLR9i _3Plo8Q _19RW-r']"}
+  (Session info: chrome=54.0.2840.71)
+  (Driver info: chromedriver=2.24.417431 (9aea000394714d2fbb20850021f6204f2256b9cf),platform=Windows NT 10.0.10240 x86_64) (WARNING: The server did not provide any stacktrace information)
+Command duration or timeout: 20.09 seconds
+For documentation on this error, please visit: http://seleniumhq.org/exceptions/no_such_element.html
+Build info: version: '2.53.1', revision: 'a36b8b1cd5757287168e54b817830adce9b0158d', time: '2016-06-30 19:26:09'
+System info: host: 'nitunp-L', ip: '192.168.2.36', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '1.8.0_101'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities [{applicationCacheEnabled=false, rotatable=false, mobileEmulationEnabled=false, networkConnectionEnabled=false, chrome={chromedriverVersion=2.24.417431 (9aea000394714d2fbb20850021f6204f2256b9cf), userDataDir=C:\Users\NITUNP~1\AppData\Local\Temp\scoped_dir8404_29878}, takesHeapSnapshot=true, pageLoadStrategy=normal, databaseEnabled=false, handlesAlerts=true, hasTouchScreen=false, version=54.0.2840.71, platform=XP, browserConnectionEnabled=false, nativeEvents=true, acceptSslCerts=true, locationContextEnabled=true, webStorageEnabled=true, browserName=chrome, takesScreenshot=true, javascriptEnabled=true, cssSelectorsEnabled=true}]
+Session ID: ca74419c082e67b9de195de705dfc314
+*** Element info: {Using=xpath, value=//*[@class='_3zLR9i _3Plo8Q _19RW-r']}]]>
             </message>
             <full-stacktrace>
-              <![CDATA[java.io.FileNotFoundException: no such entry: "EncryptionInfo", had: [SummaryInformation, DocumentSummaryInformation, Workbook]
-	at org.apache.poi.poifs.filesystem.DirectoryNode.getEntry(DirectoryNode.java:399)
-	at org.apache.poi.poifs.filesystem.DirectoryNode.createDocumentInputStream(DirectoryNode.java:188)
-	at org.apache.poi.poifs.crypt.EncryptionInfo.<init>(EncryptionInfo.java:94)
-	at org.apache.poi.poifs.crypt.EncryptionInfo.<init>(EncryptionInfo.java:88)
-	at utils.ExcelConnection.getEmailExcelPOI(ExcelConnection.java:68)
-	at testCases.TC_Login.TC_login(TC_Login.java:40)
+              <![CDATA[org.openqa.selenium.NoSuchElementException: no such element: Unable to locate element: {"method":"xpath","selector":"//*[@class='_3zLR9i _3Plo8Q _19RW-r']"}
+  (Session info: chrome=54.0.2840.71)
+  (Driver info: chromedriver=2.24.417431 (9aea000394714d2fbb20850021f6204f2256b9cf),platform=Windows NT 10.0.10240 x86_64) (WARNING: The server did not provide any stacktrace information)
+Command duration or timeout: 20.09 seconds
+For documentation on this error, please visit: http://seleniumhq.org/exceptions/no_such_element.html
+Build info: version: '2.53.1', revision: 'a36b8b1cd5757287168e54b817830adce9b0158d', time: '2016-06-30 19:26:09'
+System info: host: 'nitunp-L', ip: '192.168.2.36', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '1.8.0_101'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities [{applicationCacheEnabled=false, rotatable=false, mobileEmulationEnabled=false, networkConnectionEnabled=false, chrome={chromedriverVersion=2.24.417431 (9aea000394714d2fbb20850021f6204f2256b9cf), userDataDir=C:\Users\NITUNP~1\AppData\Local\Temp\scoped_dir8404_29878}, takesHeapSnapshot=true, pageLoadStrategy=normal, databaseEnabled=false, handlesAlerts=true, hasTouchScreen=false, version=54.0.2840.71, platform=XP, browserConnectionEnabled=false, nativeEvents=true, acceptSslCerts=true, locationContextEnabled=true, webStorageEnabled=true, browserName=chrome, takesScreenshot=true, javascriptEnabled=true, cssSelectorsEnabled=true}]
+Session ID: ca74419c082e67b9de195de705dfc314
+*** Element info: {Using=xpath, value=//*[@class='_3zLR9i _3Plo8Q _19RW-r']}
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(Unknown Source)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(Unknown Source)
+	at java.lang.reflect.Constructor.newInstance(Unknown Source)
+	at org.openqa.selenium.remote.ErrorHandler.createThrowable(ErrorHandler.java:206)
+	at org.openqa.selenium.remote.ErrorHandler.throwIfResponseFailed(ErrorHandler.java:158)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:678)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:363)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElementByXPath(RemoteWebDriver.java:500)
+	at org.openqa.selenium.By$ByXPath.findElement(By.java:361)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:355)
+	at org.openqa.selenium.support.pagefactory.DefaultElementLocator.findElement(DefaultElementLocator.java:69)
+	at org.openqa.selenium.support.pagefactory.internal.LocatingElementHandler.invoke(LocatingElementHandler.java:38)
+	at com.sun.proxy.$Proxy6.click(Unknown Source)
+	at testCases.TC_CartVerification.TC_cartVerification(TC_CartVerification.java:89)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
@@ -47,11 +80,11 @@
 	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:81)
 ]]>
             </full-stacktrace>
-          </exception> <!-- java.io.FileNotFoundException -->
+          </exception> <!-- org.openqa.selenium.NoSuchElementException -->
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- TC_login -->
-      </class> <!-- testCases.TC_Login -->
+        </test-method> <!-- TC_cartVerification -->
+      </class> <!-- testCases.TC_CartVerification -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->
 </testng-results>

@@ -51,14 +51,12 @@ public class DBConnection {
 	}
 
 	public static void putItemIntoCartDB(String itemName, int userID) throws SQLException {
-		String str = itemName;
-		int id = userID;
-
+		
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
 			Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/flipkart", "root", "1234");
 			Statement stmt = con.createStatement();
-			stmt.executeUpdate("insert into cart(ProductDetail,ID) values('" + str + "','" + id + "');");
+			stmt.executeUpdate("insert into item(ProductName) values('" + itemName + "','" + userID+ "');");
 			System.out.println("Product has been added");
 			con.close();
 

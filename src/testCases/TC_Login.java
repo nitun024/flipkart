@@ -1,51 +1,74 @@
 package testCases;
 
+import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
+import Pages.HomePage;
+import Pages.LoginPage;
 import utils.ExcelConnection;
+import utils.FKProperties;
 
 import java.io.IOException;
 import java.security.GeneralSecurityException;
+import java.sql.SQLException;
 import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 
 public class TC_Login {
 
+	private static WebDriver driver;
+	static String url, chromeJarAddress;
+	
+	@BeforeTest
+	public static void setup() throws IOException {
+
+		url = FKProperties.getValue("url");
+		chromeJarAddress = FKProperties.getValue("chromeJarAddress");
+		System.setProperty("webdriver.chrome.driver", chromeJarAddress);
+
+	}
+
 	@Test
-	public static void TC_login() throws IOException, GeneralSecurityException  {
+	public static void TC_login() throws IOException, SQLException, GeneralSecurityException {
 
-		String expText = "Hi Nitun!";
-		System.setProperty("webdriver.chrome.driver", "jar_files\\chromeDriver\\chromedriver.exe");
-		WebDriver driver = new ChromeDriver();
+		driver = new ChromeDriver();
 
-		// WebDriver driver = new FirefoxDriver();
-		driver.get("http://flipkart.com");
+		HomePage home = new HomePage(driver);
+		LoginPage login = new LoginPage(driver);
+
+		driver.get(url);
 		driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
 
 		// login page opened
-		driver.findElement(By.xpath("//a[contains(text(),'Log In')]")).click();
+		home.LoginBtn.click();
 
-		// Login
-		/*
-		 * driver.findElement(By.xpath("//*[@class='_2zrpKA']")).sendKeys(
-		 * DBConnection.getEmailFromDB());
-		 * driver.findElement(By.xpath("//*[@class='_2zrpKA _3v41xv']")).
-		 * sendKeys(DBConnection.getPasswordFromDB());
-		 */
+		/*// Login through DB
+		login.Email.sendKeys(DBConnection.getEmailFromDB());
+		login.Password.sendKeys(DBConnection.getPasswordFromDB() );*/
 
-		driver.findElement(By.xpath("//*[@class='_2zrpKA']")).sendKeys(ExcelConnection.getEmailExcelPOI("Sheet1", "Email"));
-		driver.findElement(By.xpath("//*[@class='_2zrpKA _3v41xv']")).sendKeys(ExcelConnection.getEmailExcelPOI("Sheet1", "Password"));
+		// Login through Excel file
+		 login.Email.sendKeys(ExcelConnection.getEmailExcelPOI("Sheet1","Email"));
+		 login.Password.sendKeys(ExcelConnection.getEmailExcelPOI("Sheet1", "Password"));
 
-		driver.findElement(By.xpath("//div[@class='_1avdGP']/button")).click();
+		// Clicked on the login button
+		login.LoginBtn.click();
 
 		// Login confirmation
-		WebElement text = driver.findElement(By.xpath("//*[@class='_1AHrFc _2k0gmP']"));
-		if (text.equals(expText))
-			System.out.println("Login Successful");
+		try {
+			String text = home.HiTag.getText().toString();
+			String expText = ExcelConnection.getEmailExcelPOI("Sheet1", "ExpTag");
+			
+			if (text.equals(expText))
+				System.out.println("Login Successful");
+		} catch (NoSuchElementException e) {
+			System.out.println("Login Unsuccessful");
+		}
+		
 
 		// driver.close();
 		// driver.quit();

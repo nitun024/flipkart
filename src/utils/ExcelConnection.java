@@ -1,9 +1,11 @@
 package utils;
 
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.security.GeneralSecurityException;
+import utils.FKProperties;
 
 import jxl.Cell;
 import jxl.read.biff.BiffException;
@@ -24,7 +26,7 @@ public class ExcelConnection {
 	public static String getEmailExcelJXL(String sheetName, String searchedString) throws BiffException, IOException {
 
 		int row, column, adjRow, adjCol;
-		String excelPath = "C:\\Users\\Nitun Pachauri\\workspace\\Flipkart\\Flipkart.xlsx";
+		String excelPath = FKProperties.getValue("excelPath");
 
 		jxl.Workbook wb = jxl.Workbook.getWorkbook((new File(excelPath)));
 		jxl.Sheet sh = wb.getSheet(sheetName);
@@ -43,18 +45,12 @@ public class ExcelConnection {
 	public static String getEmailExcelPOI(String sheetName, String searchedString)
 			throws  IOException, GeneralSecurityException {
 
-		/*
-		 * String excelPath =
-		 * "C:\\Users\\Nitun Pachauri\\workspace\\Flipkart\\Flipkart.xls";
-		 * String valueReceived = null; File file = new File(excelPath);
-		 * FileInputStream inputStream = new FileInputStream(file); Workbook wb2
-		 * HSSFWorkbook wb = new HSSFWorkbook(inputStream);
-		 */
 
-		String excelPath = "C:\\Users\\Nitun Pachauri\\workspace\\Flipkart\\Flipkart.xls";
+		String excelPath = FKProperties.getValue("excelpath");
 		String valueReceived = null;
 		String password = "test123";
 		File file = new File(excelPath);
+		FileInputStream fs = new FileInputStream(file);
 		
 		/*
 		// Cracking the password with .xls file
@@ -64,20 +60,24 @@ public class ExcelConnection {
        
 		
 	//	 Cracking the password with .xlsx file
-		NPOIFSFileSystem fs = new NPOIFSFileSystem(file, true);
+	/*	NPOIFSFileSystem fs = new NPOIFSFileSystem(file, true);
 		EncryptionInfo info = new EncryptionInfo(fs);
 		Decryptor decryptor = Decryptor.getInstance(info);
 		if (!decryptor.verifyPassword(password)) {
 		    throw new RuntimeException("Unable to process: document is encrypted.");
 		}
-		//Biff8EncryptionKey.setCurrentUserPassword(password);
-		InputStream ds = decryptor.getDataStream(fs);
-		Workbook wb = new XSSFWorkbook(ds);
+		//Biff8EncryptionKey.setCurrentUserPassword(password); 
+		InputStream ds = decryptor.getDataStream(fs); */
+		
+		Workbook wb = new HSSFWorkbook(fs);
 		
 		Sheet sh = wb.getSheet(sheetName);
+		
+		
 
 
 		int rowCount = sh.getLastRowNum() - sh.getFirstRowNum();
+		//System.out.println(rowCount);
 
 		// Create a loop over all the rows of excel file to read it
 
