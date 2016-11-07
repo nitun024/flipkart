@@ -60,35 +60,31 @@ public class TC_CartVerification {
 		login.LoginBtn.click();
 		// Reporter.log("Login successful", true);
 
-		// Search for the Fossil watch 'Fossil CH2600 Decker - M Analog Watch  - For Men'
+		// Search for the Fossil watch 'Fossil CH2600 Decker - M Analog Watch -
+		// For Men'
 		Thread.sleep(5000);
 		WebElement SearchBar = home.SearchBar;
 		SearchBar.click();
 		SearchBar.sendKeys("Fossil DECKER");
 		Thread.sleep(5000);
 		SearchBar.sendKeys(Keys.RETURN);
-		
+
 		// Searching for the watch from the Search results
-		List<WebElement> SearchList =  home.SearchResults;
+		// List<WebElement> SearchList = driver.findElements(By.xpath("//*[@class='_2cLu-l']"));
+		List<WebElement> SearchList = home.SearchResults;
 		System.out.println(SearchList.size());
-		
-		for(int i=0;i<SearchList.size();i++) {
-			if((SearchList.get(i).getText().toString()).equals(WatchName)) {
+
+		for (int i = 0; i < SearchList.size(); i++) {
+			if ((SearchList.get(i).getText().toString()).equals(WatchName)) {
 				System.out.println("Watch found");
 				SearchList.get(i).click();
 			}
 		}
-/*		for (WebElement webEl : SearchList) {
-			if ((webEl.getText()).equals(WatchName)) {
-				System.out.println("Watch found");
-				webEl.click();
-			}
-		}  */
-
+		
 		// Clicking on Add to Cart
 		home.AddToCartBtn.click();
 
-		// opening cart
+		// Opening cart
 		home.CartBtn.click();
 
 		// Find the added watch in the cart and if found then add it into the DB

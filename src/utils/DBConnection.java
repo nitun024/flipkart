@@ -56,7 +56,7 @@ public class DBConnection {
 			Class.forName("com.mysql.jdbc.Driver");
 			Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/flipkart", "root", "1234");
 			Statement stmt = con.createStatement();
-			stmt.executeUpdate("insert into item(ProductName) values('" + itemName + "','" + userID+ "');");
+			stmt.executeUpdate("insert into item(ProductName,Id) values('" + itemName + "'," + userID+ ");");
 			System.out.println("Product has been added");
 			con.close();
 
@@ -67,14 +67,13 @@ public class DBConnection {
 	}
 
 	public static int getIdFromEmailDB(String userEmail) throws SQLException {
-		String email = userEmail;
 		int newId = 0;
 
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
 			Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/flipkart", "root", "1234");
 			Statement stmt = con.createStatement();
-			ResultSet rs = stmt.executeQuery("select id from user where email='" + email + "';");
+			ResultSet rs = stmt.executeQuery("select id from user where email='" + userEmail + "';");
 
 			while (rs.next()) {
 				newId = Integer.parseInt(rs.getString(1));

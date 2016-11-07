@@ -2,6 +2,7 @@ package utils;
 
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.security.GeneralSecurityException;
@@ -50,32 +51,29 @@ public class ExcelConnection {
 		String valueReceived = null;
 		String password = "test123";
 		File file = new File(excelPath);
+		
 		FileInputStream fs = new FileInputStream(file);
 		
 		/*
 		// Cracking the password with .xls file
 		NPOIFSFileSystem fs = new NPOIFSFileSystem(file, true);
-        Biff8EncryptionKey.setCurrentUserPassword("nimda");
-        Workbook wb = new HSSFWorkbook(fs); */
-       
-		
+        HSSFWorkbook wb = new HSSFWorkbook(fs);
+        Biff8EncryptionKey.setCurrentUserPassword("test123"); */
+	/*	
 	//	 Cracking the password with .xlsx file
-	/*	NPOIFSFileSystem fs = new NPOIFSFileSystem(file, true);
+		NPOIFSFileSystem fs = new NPOIFSFileSystem(file, true);
 		EncryptionInfo info = new EncryptionInfo(fs);
 		Decryptor decryptor = Decryptor.getInstance(info);
 		if (!decryptor.verifyPassword(password)) {
 		    throw new RuntimeException("Unable to process: document is encrypted.");
 		}
-		//Biff8EncryptionKey.setCurrentUserPassword(password); 
-		InputStream ds = decryptor.getDataStream(fs); */
+		Biff8EncryptionKey.setCurrentUserPassword(password); 
+		InputStream ds = decryptor.getDataStream(fs);
+		Workbook wb = new XSSFWorkbook(ds); */
 		
-		Workbook wb = new HSSFWorkbook(fs);
-		
+        Workbook wb = new HSSFWorkbook(fs);
 		Sheet sh = wb.getSheet(sheetName);
 		
-		
-
-
 		int rowCount = sh.getLastRowNum() - sh.getFirstRowNum();
 		//System.out.println(rowCount);
 
@@ -92,6 +90,47 @@ public class ExcelConnection {
 
 		}
 		return valueReceived;
+	}
+	
+	public static void putEmailExcelPOI(String sheetName, String searchedString, String priceIphone) throws IOException {
+		
+		String excelPath = FKProperties.getValue("excelpath");
+		String password = "test123";
+		
+		File file = new File(excelPath);
+		FileInputStream fs = new FileInputStream(file);
+		Workbook wb = new HSSFWorkbook(fs);
+		Sheet sh = wb.getSheet(sheetName);
+			
+			int rowCount = sh.getLastRowNum() - sh.getFirstRowNum();
+			System.out.println(rowCount);
+			
+			for (int i = 0; i < rowCount + 1; i++) {
+				Row row = sh.getRow(i);
+				// Create a loop through the cell values in a row
+				for (int j = 0; j < row.getLastCellNum(); j++) {
+					// Get to exact cell in excel data
+					if ((row.getCell(j).getStringCellValue().equals(searchedString))) {
+							org.apache.poi.ss.usermodel.Cell cell = row.createCell(++j);
+						  cell.setCellValue(priceIphone);
+					}
+						
+				}
+
+			}
+			
+			try
+	        {
+	            //Write the workbook in file system
+	            FileOutputStream out = new FileOutputStream(new File("Flipkart.xls"));
+	            wb.write(out);
+	            out.close();
+	            System.out.println("Flipkart.xls written successfully on disk.");
+	        } 
+	        catch (Exception e) 
+	        {
+	            e.printStackTrace();
+	        }
 	}
 
 }

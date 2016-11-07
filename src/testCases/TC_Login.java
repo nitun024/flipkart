@@ -11,9 +11,11 @@ import utils.FKProperties;
 import java.io.IOException;
 import java.security.GeneralSecurityException;
 import java.sql.SQLException;
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -34,7 +36,7 @@ public class TC_Login {
 	}
 
 	@Test
-	public static void TC_login() throws IOException, SQLException, GeneralSecurityException {
+	public static void TC_login() throws IOException, SQLException, GeneralSecurityException, InterruptedException {
 
 		driver = new ChromeDriver();
 
@@ -69,6 +71,27 @@ public class TC_Login {
 			System.out.println("Login Unsuccessful");
 		}
 		
+		//Search for Apple iPhone 6S Plus (Space Grey, 128 GB)
+		WebElement SearchBar = home.SearchBar;
+		SearchBar.click();
+		SearchBar.sendKeys("iPhone 6s+");
+		Thread.sleep(5000);
+		SearchBar.sendKeys(Keys.RETURN);
+		
+		List<WebElement> SearchList = home.SearchResults;
+		System.out.println(SearchList.size());
+
+		for (int i = 0; i < SearchList.size(); i++) {
+			if ((SearchList.get(i).getText().toString()).equals("Apple iPhone 6S Plus (Space Grey, 16 GB)")) {
+				System.out.println("Phone found");
+				SearchList.get(i).click();
+				break;
+			}
+		}
+		System.out.println(home.Price.getText());
+		
+		//Put the price of the Phone into the excel file
+		ExcelConnection.putEmailExcelPOI("Sheet1", "iPhonePrice", home.Price.getText());
 
 		// driver.close();
 		// driver.quit();
