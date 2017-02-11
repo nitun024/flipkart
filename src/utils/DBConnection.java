@@ -8,7 +8,7 @@ import java.sql.Statement;
 
 public class DBConnection {
 
-	public static String getEmailFromDB() throws SQLException {
+	public static String getEmailfromMySQL() throws SQLException {
 		String email = null;
 
 		try {
@@ -29,7 +29,7 @@ public class DBConnection {
 
 	}
 
-	public static String getPasswordFromDB() throws SQLException {
+	public static String getPasswordFromMySQL() throws SQLException {
 		String pwd = null;
 
 		try {
@@ -51,14 +51,12 @@ public class DBConnection {
 	}
 
 	public static void putItemIntoCartDB(String itemName, int userID) throws SQLException {
-		String str = itemName;
-		int id = userID;
-
+		
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
 			Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/flipkart", "root", "1234");
 			Statement stmt = con.createStatement();
-			stmt.executeUpdate("insert into cart(ProductDetail,ID) values('" + str + "','" + id + "');");
+			stmt.executeUpdate("insert into item(ProductName,Id) values('" + itemName + "'," + userID+ ");");
 			System.out.println("Product has been added");
 			con.close();
 
@@ -69,14 +67,13 @@ public class DBConnection {
 	}
 
 	public static int getIdFromEmailDB(String userEmail) throws SQLException {
-		String email = userEmail;
 		int newId = 0;
 
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
 			Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/flipkart", "root", "1234");
 			Statement stmt = con.createStatement();
-			ResultSet rs = stmt.executeQuery("select id from user where email='" + email + "';");
+			ResultSet rs = stmt.executeQuery("select id from user where email='" + userEmail + "';");
 
 			while (rs.next()) {
 				newId = Integer.parseInt(rs.getString(1));
@@ -87,6 +84,24 @@ public class DBConnection {
 			e.printStackTrace();
 		}
 		return newId;
+	}
+	
+	public static String getEmailfromSQLServer() throws ClassNotFoundException, SQLException {
+		
+		String boom = null;
+		
+		Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+		Connection conn = DriverManager.getConnection("jdbc:sqlserver://NITUNP-L;databasename=Flipkart","","");
+		Statement sta = conn.createStatement();
+		String Sql = "select top 1 * from hra";
+		ResultSet rs = sta.executeQuery(Sql);
+			System.out.println(rs);
+		while (rs.next()) {
+			System.out.println(Integer.toString(rs.getInt("FirstName")));
+			System.out.println(Integer.toString(rs.getInt("LastName")));
+
+		}
+		return boom;
 	}
 
 }

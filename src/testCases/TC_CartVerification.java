@@ -1,67 +1,76 @@
 package testCases;
 
+import java.io.IOException;
+import java.security.GeneralSecurityException;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.annotations.BeforeTest;
+import org.testng.annotations.Test;
+
+import Pages.HomePage;
+import Pages.LoginPage;
 import utils.DBConnection;
+import utils.ExcelConnection;
+import utils.FKProperties;
 
-public class TC_CartVerification {
+public class TC_CartVerification extends DriverInstantiation {
 
-	//@Test
-	public static void TC_cartVerification() throws SQLException, InterruptedException {
+	@Test
+	public static void TC_cartVerification()
+			throws SQLException, InterruptedException, IOException, GeneralSecurityException, ClassNotFoundException {
 
-		// TC_Login.TC_login();
-		System.setProperty("webdriver.chrome.driver", "jar_files\\chromeDriver\\chromedriver.exe");
-		WebDriver driver = new ChromeDriver();
-		String WatchName = "Fossil CH2622 Decker Analog Watch - For Men";
-
-		// WebDriver driver = new FirefoxDriver();
-		driver.get("https://www.flipkart.com/");
-		driver.manage().timeouts().implicitlyWait(50, TimeUnit.SECONDS);
-		driver.manage().window().maximize();
+		HomePage home = new HomePage(driver);
+		LoginPage login = new LoginPage(driver);
+		String WatchName = ExcelConnection.getEmailExcelPOI("Sheet1", "WatchName");
 
 		// login page opened
-		driver.findElement(By.xpath("//a[contains(text(),'Log In')]")).click();
+		home.LoginBtn.click();
 
 		// Login
-		String emailAdd = DBConnection.getEmailFromDB();
-		driver.findElement(By.xpath("//*[@class='_2zrpKA']")).sendKeys(emailAdd);
-		driver.findElement(By.xpath("//*[@class='_2zrpKA _3v41xv']")).sendKeys(DBConnection.getPasswordFromDB());
-		driver.findElement(By.xpath("//div[@class='_1avdGP']/button")).click();
-	//	Reporter.log("Login succesful", true);
+		String emailAdd = DBConnection.getEmailfromMySQL();
 
-		// Search for the Fossil watch 'Fossil CH2601I DECKER - M Analog Watch -
+		login.Email.sendKeys(DBConnection.getEmailfromSQLServer());
+		login.Password.sendKeys(DBConnection.getPasswordFromMySQL());
+		login.LoginBtn.click();
+		// Reporter.log("Login successful", true);
+
+		// Search for the Fossil watch 'Fossil CH2600 Decker - M Analog Watch -
 		// For Men'
 		Thread.sleep(5000);
-		WebElement SearchBar = driver.findElement(By.xpath("//*[@class='LM6RPg'][@name='q']"));
+		WebElement SearchBar = home.SearchBar;
 		SearchBar.click();
 		SearchBar.sendKeys("Fossil DECKER");
 		Thread.sleep(5000);
 		SearchBar.sendKeys(Keys.RETURN);
 
 		// Searching for the watch from the Search results
-		java.util.List<WebElement> SearchList = driver.findElements(By.xpath(".//*[@class='_2cLu-l']"));
+		// List<WebElement> SearchList = driver.findElements(By.xpath("//*[@class='_2cLu-l']"));
+		List<WebElement> SearchList = home.SearchResults;
+		System.out.println(SearchList.size());
 
-		for (WebElement webEl : SearchList) {
-			if ((webEl.getText()).equals(WatchName)) {
+		for (int i = 0; i < SearchList.size(); i++) {
+			if ((SearchList.get(i).getText().toString()).equals(WatchName)) {
 				System.out.println("Watch found");
-				webEl.click();
+				SearchList.get(i).click();
 			}
 		}
-
+		
 		// Clicking on Add to Cart
-		driver.findElement(By.xpath("//*[@class='_3zLR9i _3Plo8Q _19RW-r']")).click();
+		home.AddToCartBtn.click();
 
-		// opening cart
-		driver.findElement(By.xpath(".//*[@href='/viewcart']")).click();
+		// Opening cart
+		home.CartBtn.click();
 
 		// Find the added watch in the cart and if found then add it into the DB
 		// (cart table)
-		java.util.List<WebElement> CartList = driver.findElements(By.xpath("//span[@class='title fk-font-14']"));
+		java.util.List<WebElement> CartList = home.ItemsInCart;
 
 		for (WebElement webEl : CartList) {
 			System.out.println(webEl.getText());
