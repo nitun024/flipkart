@@ -3,7 +3,7 @@
 <suite name="Suite">
 	<test name="Test">
 		<classes>
-			<class name="testCases.TC_Login" />
+			<class name="main.java.testCases.TC_Login" />
 		</classes>
 	</test> <!-- Test -->
 </suite> <!-- Suite -->

@@ -1,4 +1,4 @@
-package testCases;
+package main.java.testCases;
 
 import java.io.IOException;
 import java.util.concurrent.TimeUnit;
@@ -8,9 +8,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.annotations.BeforeTest;
 
-import Pages.HomePage;
-import Pages.LoginPage;
-import utils.FKProperties;
+import main.java.utils.FKProperties;
 
 public class DriverInstantiation {
 

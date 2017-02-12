@@ -1,12 +1,10 @@
-package testCases;
+package main.java.testCases;
 
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
-import Pages.HomePage;
-import Pages.LoginPage;
-import utils.ExcelConnection;
-import utils.FKProperties;
+import main.java.Pages.HomePage;
+import main.java.Pages.LoginPage;
 
 import java.io.IOException;
 import java.security.GeneralSecurityException;

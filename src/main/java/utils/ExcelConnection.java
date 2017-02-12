@@ -1,4 +1,4 @@
-package utils;
+package main.java.utils;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -6,8 +6,6 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.security.GeneralSecurityException;
-import utils.FKProperties;
-
 import jxl.Cell;
 import jxl.read.biff.BiffException;
 
